@@ -22,6 +22,30 @@ func (s *server) Add(
 	}, nil
 }
 
+func (s *server) Sub(
+	ctx context.Context, in *pb.CalcRequest,
+) (*pb.CalcResponse, error) {
+	return &pb.CalcResponse{
+		Result: in.A - in.B,
+	}, nil
+}
+
+func (s *server) Multiply(
+	ctx context.Context, in *pb.CalcRequest,
+) (*pb.CalcResponse, error) {
+	return &pb.CalcResponse{
+		Result: in.A * in.B,
+	}, nil
+}
+
+func (s *server) Divide(
+	ctx context.Context, in *pb.CalcRequest,
+) (*pb.CalcResponse, error) {
+	return &pb.CalcResponse{
+		Result: in.A / in.B,
+	}, nil
+}
+
 func main() {
 	listener, err := net.Listen("tcp", ":8080")
 	if err != nil {
